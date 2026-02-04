@@ -1,16 +1,17 @@
 package com.artDash.artDash.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
-@Data
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -19,9 +20,16 @@ public class User {
 
     private String firstName;
     private String lastName;
+
+    @Column(nullable = false, unique = true)
     private String userName;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String passwordHash;
+
     private String profilePicUrl;
     private String bio;
 
